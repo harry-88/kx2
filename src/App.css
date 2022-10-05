@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -7,6 +9,53 @@
   pointer-events: none;
 }
 
+.avatarSideMenu{
+  width: 70px;
+  height: 70px;
+}
+.smalWidth{
+  margin-left: 60px;
+  margin-right: 40px;
+}
+.fullWidth{
+  margin-left: 220px;
+  margin-right: 40px;
+}
+.blackColor{
+  background: #f12711; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left, #f5af19, #f12711
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #f5af19,
+    #f12711
+  );
+}
+
+.columnWidth{
+  width: 500px;
+}
+
+.brandBgColor{
+  background: linear-gradient(
+    to left,
+    #f5af19,
+    #f12711
+  );
+}
+.brandColor{
+  color: #f5af13;
+  /* color: linear-gradient(
+    #f12711
+  ); */
+}
+.tableWidth{
+  max-width: 100%;
+  overflow-x: scroll;
+  max-height: 500px;
+  overflow-y: scroll;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

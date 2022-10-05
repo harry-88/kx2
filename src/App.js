@@ -1,23 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import SideBar from './Components/Sidebar/Sidebar';
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from 'react';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Customer from './Components/Customer/Customer';
+import Administration from './Components/Administration/Administration';
+import Grocery from './Components/Grocery/Grocery';
+import Locations from './Components/Locations/Locations';
+import Warehouses from './Components/Warehouses/Warehouses';
+import Login from './Components/Login/Login';
 
 function App() {
+  const [pageFullWidth,setPageFullWidth] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div >
+      <BrowserRouter>
+
+        <Routes>
+          <Route path="/login" element={[<Login /> ]} />
+          <Route path="/" element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Dashboard pageFullWidth={pageFullWidth} /> ]} />
+          <Route path='/customers' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Customer  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path='/locations' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Locations  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path='/administration' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Administration  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path='/grocery' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Grocery  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path='/warehouses' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Warehouses  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
