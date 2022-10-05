@@ -264,7 +264,7 @@ export default function AddCustomerModal(props) {
                 </div>
                 <div className="modal-footer">
                     {/* <button type="button" className="btn btn-outline-danger" data-dismiss="modal">Cancel</button> */}
-                    <button type="button" className="btn cancelbtn" data-dismiss="modal">Cancel</button>
+                    <button type="button" onClick={props.onHide} className="btn cancelbtn" data-dismiss="modal">Cancel</button>
                     <button type="button" className='btn savebtn'>Save</button>
                 </div>
             </div >

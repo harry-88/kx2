@@ -109,7 +109,7 @@ export default function Customer(props) {
 
                 </table>
 
-            </div>>
+            </div>
            </div>
 
             <AddCustomerModal
