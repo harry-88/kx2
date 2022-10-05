@@ -7,8 +7,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { getUserData } from '../../GetData/Users';
+import AddCustomerModal from './AddCustomerModal';
 
 export default function Customer(props) {
+
+    const [modalShow, setAddCustomerModalShow] = useState(false);
 
     const tableDaata = [
         {
@@ -62,53 +65,17 @@ export default function Customer(props) {
         setUserData(record);
     }
     return (
-        <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
-            <div class="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
-                <div class="p-2 bd-highlight"><h4 className=''>Customers</h4></div>
-                <div class="ms-auto p-2 bd-highlight">
-                    <button className='btn btn-light btn-outline-warning text-dark' >Add Account</button>
+        <>
+            <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
+                <div class="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
+                    <div class="p-2 bd-highlight"><h4 className=''>Customers</h4></div>
+                    <div class="ms-auto p-2 bd-highlight">
+                        <button className='btn btn-light btn-outline-warning text-dark' onClick={()=>setAddCustomerModalShow(true)} >Add Account</button>
+                    </div>
                 </div>
-            </div>
 
-            {/* <TableContainer className='container mt-5' component={Paper}>
-                <Table sx={{ minWidth: 600 }} size="small" aria-label="a dense table">
-                    <TableHead className='brandBgColor'>
-                        <TableRow>
-                            <TableCell >ID</TableCell>
-                            <TableCell align="left" width="30%">Name</TableCell>
-                            <TableCell align="left">Email</TableCell>
-                            <TableCell align="left">status</TableCell>
-                            <TableCell align="left">Address</TableCell>
-                            <TableCell align="left">Ethnicity</TableCell>
-                            <TableCell align="left">Phone no</TableCell>
-                            <TableCell align="left">Created at</TableCell>
-                            <TableCell align="left">Updated at</TableCell>
-                            <TableCell align="left">Action</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {userData.map((row) => (
-                            <TableRow
-                                key={row.name}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {row.id}
-                                </TableCell>
-                                <TableCell align="left" >{row.name}</TableCell>
-                                <TableCell align="left" >{row.email}</TableCell>
-                                <TableCell align="left">{row.status}</TableCell>
-                                <TableCell align="left">{row.address !== null ? row.address : '-----'}</TableCell>
-                                <TableCell align="left">{row.ethnic_monitoring !== null ? row.ethnic_monitoring : '-----'}</TableCell>
-                                <TableCell align="left">{row.phone_no !== null ? row.phone_no : '-----'}</TableCell>
-                                <TableCell align="left">{row.created_at.slice(0, 10) + "\t" + row.created_at.slice(11, 19)}</TableCell>
-                                <TableCell align="left">{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</TableCell>
-                                <TableCell className='brandColor' align="left"><><p className='brandColor' ><i role={'button'} class="fa-solid fa-pen-to-square"></i> <i role={'button'} class="fa-sharp fa-solid fa-trash"></i></p></></TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer> */}
             <div className='container mt-5  tableWidth'>
+
                 <table className='table table-striped table-hover'>
                     <thead className='brandBgColor text-white'>
                         
@@ -142,7 +109,13 @@ export default function Customer(props) {
 
                 </table>
 
-            </div>
-        </div>
+            </div>>
+           </div>
+
+            <AddCustomerModal
+                show={modalShow}
+                onHide={() => setAddCustomerModalShow(false)}
+            />
+        </>
     )
 }
