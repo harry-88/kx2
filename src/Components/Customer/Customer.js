@@ -70,12 +70,12 @@ export default function Customer(props) {
                 </div>
             </div>
 
-            <TableContainer className='container mt-5' component={Paper}>
+            {/* <TableContainer className='container mt-5' component={Paper}>
                 <Table sx={{ minWidth: 600 }} size="small" aria-label="a dense table">
                     <TableHead className='brandBgColor'>
                         <TableRow>
                             <TableCell >ID</TableCell>
-                            <TableCell align="left" width="50%">Name</TableCell>
+                            <TableCell align="left" width="30%">Name</TableCell>
                             <TableCell align="left">Email</TableCell>
                             <TableCell align="left">status</TableCell>
                             <TableCell align="left">Address</TableCell>
@@ -94,8 +94,8 @@ export default function Customer(props) {
                                 <TableCell component="th" scope="row">
                                     {row.id}
                                 </TableCell>
-                                <TableCell align="left" style={{ width: '40%' }}>{row.name}</TableCell>
-                                <TableCell align="left">{row.email}</TableCell>
+                                <TableCell align="left" >{row.name}</TableCell>
+                                <TableCell align="left" >{row.email}</TableCell>
                                 <TableCell align="left">{row.status}</TableCell>
                                 <TableCell align="left">{row.address !== null ? row.address : '-----'}</TableCell>
                                 <TableCell align="left">{row.ethnic_monitoring !== null ? row.ethnic_monitoring : '-----'}</TableCell>
@@ -107,21 +107,21 @@ export default function Customer(props) {
                         ))}
                     </TableBody>
                 </Table>
-            </TableContainer>
-            {/* <div className='container mt-5  tableWidth'>
+            </TableContainer> */}
+            <div className='container mt-5  tableWidth'>
                 <table className='table table-striped table-hover'>
-                    <thead className='p-1 brandBgColor'>
+                    <thead className='brandBgColor text-white'>
                         
-                    <td >ID</td>
-                            <td  >Name</td>
-                            <td >Email</td>
-                            <td >status</td>
-                            <td >Address</td>
-                            <td >Ethnicity</td>
-                            <td >Phone no</td>
-                            <td >Created at</td>
-                            <td >Updated at</td>
-                            <td >Action</td>
+                            <td className='py-3'>ID</td>
+                            <th className='py-3' style={{width:"15%"}}>Name</th>
+                            <th className='py-3'>Email</th>
+                            <th className='py-3' style={{width:"5%"}}>status</th>
+                            {/* <th style={{width:"20%"}}>Address</th> */}
+                            <th className='py-3' style={{width:"8%"}}>Ethnicity</th>
+                            <th className='py-3' style={{width:"5%"}}>Phone no</th>
+                            <th className='py-3' style={{width:"22%"}}>Created at</th>
+                            <th className='py-3' style={{width:"22%"}}>Updated at</th>
+                            <th className='py-3'>Action</th>
                     </thead>
                     <tbody>
                         {userData.map((row) => {
@@ -130,11 +130,11 @@ export default function Customer(props) {
                                 <td >{row.name}</td>
                                 <td>{row.email}</td>
                                 <td>{row.status}</td>
-                                <td>{row.address !== null ? row.address : '-----'}</td>
+                                {/* <td>{row.address !== null ? row.address : '-----'}</td> */}
                                 <td>{row.ethnic_monitoring !== null ? row.ethnic_monitoring : '-----'}</td>
                                 <td>{row.phone_no !== null ? row.phone_no : '-----'}</td>
                                 <td>{row.created_at.slice(0, 10) + "\t" + row.created_at.slice(11, 19)}</td>
-                                <td>{row.updated_at}</td>
+                                <td>{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</td>
                                 <td><><p className='brandColor'><i role={'button'} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} class="fa-sharp fa-solid fa-trash"></i></p></></td>
                             </tr>
                         })}
@@ -142,7 +142,7 @@ export default function Customer(props) {
 
                 </table>
 
-            </div> */}
+            </div>
         </div>
     )
 }

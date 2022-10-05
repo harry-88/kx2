@@ -52,7 +52,7 @@
 }
 .tableWidth{
   max-width: 100%;
-  overflow-x: scroll;
+  overflow-x: hidden;
   max-height: 500px;
   overflow-y: scroll;
 }
