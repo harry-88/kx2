@@ -11,6 +11,7 @@ import Grocery from './Components/Grocery/Grocery';
 import Locations from './Components/Locations/Locations';
 import Warehouses from './Components/Warehouses/Warehouses';
 import Login from './Components/Login/Login';
+// import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [pageFullWidth,setPageFullWidth] = useState(false);

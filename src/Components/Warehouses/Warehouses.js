@@ -17,9 +17,6 @@ export default function Warehouses(props) {
   return (
 
     <>
-    {/* <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
-     <h4 className='bg-light shadow-lg  bg-body rounded  p-2 mt-2'>Warehouses</h4>
-      </div> */}
 
       <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
         <div class="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
