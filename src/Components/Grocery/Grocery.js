@@ -21,8 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { Menu } from '@mui/material';
 import { hover } from '@testing-library/user-event/dist/hover';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import './Grocery.css';
 
 export default function Grocery(props) {
 
