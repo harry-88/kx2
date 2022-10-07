@@ -23,8 +23,11 @@ import { Menu } from '@mui/material';
 import { hover } from '@testing-library/user-event/dist/hover';
 import './Grocery.css';
 
+
 export default function Grocery(props) {
 
+  
+  let navigator = useNavigate();
   const [GrocerymodalShow, setGroceryModalShow] = useState(false);
 
   const [categoryRecord, setCatagory] = useState([]);
@@ -109,8 +112,6 @@ export default function Grocery(props) {
           {categoryRecord.length !== 0 ? categoryRecord.map((c, i) => {
             return <div className='col-lg-3 col-sm-6 mt-5' >
               <div className='imageContainer'>
-
-                {/* <p className="top-right text-dark" role={'button'}><i className="fa-solid fa-ellipsis-vertical"></i></p> */}
                 <Card sx={{ maxWidth: 345 }}>
                   <CardHeader
 
@@ -122,7 +123,7 @@ export default function Grocery(props) {
                     title={c.name}
 
                   />
-                  <CardMedia
+                  <CardMedia role='button' onClick={()=> navigator(`${c.id}`)}
                     component="img"
                     height="194"
                     image={Menu[i].image}
