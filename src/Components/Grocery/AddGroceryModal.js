@@ -10,6 +10,7 @@ export default function AddGroceryModal(props) {
         setModalInputValue({ ...inputModalValue, [e.target.name]: e.target.value });
     }
 
+    
 
     const [inputModalValue, setModalInputValue] = useState({
         name: '',

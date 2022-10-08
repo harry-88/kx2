@@ -20,6 +20,7 @@ import { useNavigate, } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import './Grocery.css';
+import ViewDetail from './ViewDetail';
 
 
 
@@ -28,8 +29,10 @@ export default function Grocery(props) {
 
   let navigator = useNavigate();
   const [GrocerymodalShow, setGroceryModalShow] = useState(false);
+  const [viewDetail, setViewDetail] = useState(false)
 
   const [categoryRecord, setCatagory] = useState([]);
+  const [catData,setCatData] = useState();
   useEffect(() => {
     getAllCatagory();
   }, [])
@@ -93,6 +96,11 @@ export default function Grocery(props) {
     }
   ]
 
+  const showDetail = (detail)=>{
+    setCatData(detail)
+    setViewDetail(true)
+  }
+
   return (
 
     <>
@@ -119,8 +127,8 @@ export default function Grocery(props) {
                         <div class="dropdown">
                           <button class="dropbtn"><MoreVertIcon /></button>
                           <div class="dropdown-content">
-                            <a href="#">View</a>
-                            <a href="#">Delete</a>
+                            <a onClick={() => showDetail(c)}><i class="fa-solid fa-circle-info"></i> View</a>
+                            <a > <i class="fa-solid fa-trash"></i> Delete</a>
                           </div>
                         </div>
                       </IconButton>
@@ -145,6 +153,9 @@ export default function Grocery(props) {
 
       </div>
 
+      <ViewDetail show={viewDetail}
+        onHide={() => setViewDetail(false)}
+        data={catData} />
       <AddGroceryModal
         getAllCatagory={getAllCatagory}
         show={GrocerymodalShow}
