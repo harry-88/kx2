@@ -19,9 +19,8 @@ import AddGroceryModal from './AddGroceryModal';
 import { useNavigate, } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { Menu } from '@mui/material';
-import { hover } from '@testing-library/user-event/dist/hover';
 import './Grocery.css';
+
 
 
 export default function Grocery(props) {
@@ -114,12 +113,19 @@ export default function Grocery(props) {
               <div className='imageContainer'>
                 <Card sx={{ maxWidth: 345 }}>
                   <CardHeader
-
                     action={
-                      <IconButton  aria-label="settings">
-                        <MoreVertIcon />
+                      <IconButton aria-label="settings">
+                        {/* <MoreVertIcon /> */}
+                        <div class="dropdown">
+                          <button class="dropbtn"><MoreVertIcon /></button>
+                          <div class="dropdown-content">
+                            <a href="#">View</a>
+                            <a href="#">Delete</a>
+                          </div>
+                        </div>
                       </IconButton>
                     }
+
                     title={c.name}
                   />
                   <CardMedia role='button' onClick={() => navigator(`${c.id}`)}
