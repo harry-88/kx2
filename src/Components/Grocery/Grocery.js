@@ -26,7 +26,7 @@ import './Grocery.css';
 
 export default function Grocery(props) {
 
-  
+
   let navigator = useNavigate();
   const [GrocerymodalShow, setGroceryModalShow] = useState(false);
 
@@ -98,9 +98,9 @@ export default function Grocery(props) {
 
     <>
       <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
-        <div class="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
-          <div class="p-2 bd-highlight"><h4 className=''>Grocery</h4></div>
-          <div class="ms-auto p-2 bd-highlight">
+        <div className="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
+          <div className="p-2 bd-highlight"><h4 className=''>Grocery</h4></div>
+          <div className="ms-auto p-2 bd-highlight">
             <button className='btn btn-light btn-outline-warning text-dark' onClick={() => setGroceryModalShow(true)}>Add Category</button>
           </div>
         </div>
@@ -116,20 +116,18 @@ export default function Grocery(props) {
                   <CardHeader
 
                     action={
-                      <IconButton aria-label="settings">
+                      <IconButton  aria-label="settings">
                         <MoreVertIcon />
                       </IconButton>
                     }
                     title={c.name}
-
                   />
-                  <CardMedia role='button' onClick={()=> navigator(`${c.id}`)}
+                  <CardMedia role='button' onClick={() => navigator(`${c.id}`)}
                     component="img"
                     height="194"
-                    image={Menu[i].image}
+                    image={Menu[i % 8].image}
                   />
                 </Card>
-                {/* <p className="centered text-dark">{c.name}</p> */}
               </div>
 
             </div>
@@ -142,6 +140,7 @@ export default function Grocery(props) {
       </div>
 
       <AddGroceryModal
+        getAllCatagory={getAllCatagory}
         show={GrocerymodalShow}
         onHide={() => setGroceryModalShow(false)}
       />
