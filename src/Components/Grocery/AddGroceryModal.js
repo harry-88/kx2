@@ -25,6 +25,7 @@ export default function AddGroceryModal(props) {
             const result  = await addCatagoryRecord('0',inputModalValue);
             if(result.code === 200)
             {
+                toast("Catagory is added.")
                 props.getAllCatagory();
 
             }

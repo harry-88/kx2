@@ -21,7 +21,6 @@ export default function AddWarehouseModal(props) {
     }
 
     const [InputCheckBox,setInputCheckBox] = useState('')
-    // console.log('box is', InputCheckBox.id);
 
     const validCheckBox = (e) => {
         setInputCheckBox(e.target.id);
