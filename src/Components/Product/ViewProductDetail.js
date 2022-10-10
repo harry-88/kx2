@@ -67,7 +67,7 @@ export default function ViewDetail(props) {
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory Created At</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='created_at' disabled={!isEdit}   value={data?.created_at} placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='created_at' disabled={!isEdit}   value={data?.created_at.slice(0, 10) + "\t" + data?.created_at.slice(11, 19)} placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
@@ -76,7 +76,7 @@ export default function ViewDetail(props) {
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory Update at</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='updated_at' disabled={!isEdit}   value={data?.updated_at} placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='updated_at' disabled={!isEdit}   value={data?.updated_at.slice(0, 10) + "\t" + data?.updated_at.slice(11, 19)} placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
