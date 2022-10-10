@@ -67,7 +67,7 @@ export default function Customer(props) {
     return (
         <>
             <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
-                <div class="d-flex bd-highlight bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
+                <div class="d-flex bd-highlight  bg-light shadow-lg  bg-body rounded mx-4 p-2 mt-2">
                     <div class="p-2 bd-highlight"><h4 className=''>Customers</h4></div>
                     <div class="ms-auto p-2 bd-highlight">
                         <button className='btn btn-light btn-outline-warning text-dark' onClick={() => setAddCustomerModalShow(true)} >Add Account</button>
