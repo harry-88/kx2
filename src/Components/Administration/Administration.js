@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Administration(props) {
+
+  let navigator = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem('user') === null) {
+      navigator('/login')
+    }
+  })
   return (
     <div>
       
