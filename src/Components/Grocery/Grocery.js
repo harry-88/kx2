@@ -19,8 +19,8 @@ import AddGroceryModal from './AddGroceryModal';
 import { useNavigate, } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import './Grocery.css';
 import ViewDetail from './ViewDetail';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -32,7 +32,7 @@ export default function Grocery(props) {
   const [viewDetail, setViewDetail] = useState(false)
 
   const [categoryRecord, setCatagory] = useState([]);
-  const [catData,setCatData] = useState();
+  const [catData, setCatData] = useState();
   useEffect(() => {
     getAllCatagory();
   }, [])
@@ -96,7 +96,7 @@ export default function Grocery(props) {
     }
   ]
 
-  const showDetail = (detail)=>{
+  const showDetail = (detail) => {
     setCatData(detail)
     setViewDetail(true)
   }
@@ -117,40 +117,37 @@ export default function Grocery(props) {
 
 
           {categoryRecord.length !== 0 ? categoryRecord.map((c, i) => {
-            return <div className='col-lg-3 col-sm-6 mt-5' >
-              <div className='imageContainer'>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardHeader
-                    action={
-                      <IconButton aria-label="settings">
-                        <div class="dropdown">
-                          <button class="dropbtn"><MoreVertIcon /></button>
-                          <div class="dropdown-content">
-                            <a onClick={() => showDetail(c)}><i class="fa-solid fa-circle-info"></i> View</a>
-                            <a > <i class="fa-solid fa-trash"></i> Delete</a>
-                          </div>
-                        </div>
-                      </IconButton>
-                    }
+            return <div className='col-lg-3 col-sm-12'>
+              <div className="card mb-3 mt-3" style={{ height: "260px" }}>
+                <div className="row ">
+                  <div className="" style={{cursor: "pointer"}} onClick={() => navigator(`${c.id}`)}>
+                    <img src={Menu[i % 2].image} style={{ width: "500px" }} className="img-fluid rounded-start" alt="" />
+                  </div>
+                  <div className="d-flex">
+                    <div className="card-body">
+                      <h5 className="card-title">{c.name}</h5>
+                    </div>
+                    <div className='mt-1 p-1'>
+                      <Dropdown>
+                        <Dropdown.Toggle variant="" id="dropdown-basic"></Dropdown.Toggle>
 
-                    title={c.name}
-                  />
-                  <CardMedia role='button' onClick={() => navigator(`${c.id}`)}
-                    component="img"
-                    height="194"
-                    image={Menu[i % 8].image}
-                  />
-                </Card>
+                        <Dropdown.Menu>
+                          <Dropdown.Item data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => showDetail(c)}><i className="fa-solid fa-circle-info"></i> View</Dropdown.Item>
+                          <Dropdown.Item><i className="fa-solid fa-trash"></i> Delete</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
+                  </div>
+                </div>
               </div>
-
             </div>
           }) : ''}
 
 
-        </div>
+        </div >
         <ToastContainer className={'mt-5'} />
 
-      </div>
+      </div >
 
       <ViewDetail show={viewDetail}
         onHide={() => setViewDetail(false)}

@@ -34,6 +34,7 @@ export default function AddProduct(props) {
         }
         else{
             toast("Product is added.")
+            props.onHide();
             props.getProduct();
         }
 

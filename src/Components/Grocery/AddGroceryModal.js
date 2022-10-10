@@ -26,6 +26,7 @@ export default function AddGroceryModal(props) {
             if(result.code === 200)
             {
                 toast("Catagory is added.")
+                props.onHide();
                 props.getAllCatagory();
 
             }
