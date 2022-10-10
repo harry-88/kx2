@@ -104,6 +104,10 @@ export default function Grocery(props) {
     setViewDetail(true)
   }
 
+  const del = (data) =>{
+    alert(`Would you want to delete ${data.name}`)
+}
+
   return (
 
     <>
@@ -136,7 +140,7 @@ export default function Grocery(props) {
 
                         <Dropdown.Menu>
                           <Dropdown.Item data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => showDetail(c)}><i className="fa-solid fa-circle-info"></i> View</Dropdown.Item>
-                          <Dropdown.Item><i className="fa-solid fa-trash"></i> Delete</Dropdown.Item>
+                          <Dropdown.Item onClick={()=>del(c)}><i className="fa-solid fa-trash"></i> Delete</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>

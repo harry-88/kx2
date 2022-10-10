@@ -11,6 +11,16 @@ import AddCustomerModal from './AddCustomerModal';
 import { useNavigate } from 'react-router-dom';
 
 export default function Customer(props) {
+
+
+    const [catData, setCatData] = useState();
+    const [viewDetail, setViewDetail] = useState(false)
+
+    const showDetail = (detail) => {
+        setCatData(detail)
+        setViewDetail(true)
+    }
+
     let navigator = useNavigate();
 
     const [modalShow, setAddCustomerModalShow] = useState(false);
@@ -25,6 +35,11 @@ export default function Customer(props) {
     const getAllUser = async () => {
         const record = await getUserData()
         setUserData(record);
+    }
+
+
+    const del = (data) =>{
+        alert(`Would you want to delete ${data.name}`)
     }
     return (
         <>
@@ -59,12 +74,11 @@ export default function Customer(props) {
                                     <td >{row.name}</td>
                                     <td>{row.email}</td>
                                     <td>{row.status}</td>
-                                    {/* <td>{row.address !== null ? row.address : '-----'}</td> */}
                                     <td>{row.ethnic_monitoring !== null ? row.ethnic_monitoring : '-----'}</td>
                                     <td>{row.phone_no !== null ? row.phone_no : '-----'}</td>
                                     <td>{row.created_at.slice(0, 10) + "\t" + row.created_at.slice(11, 19)}</td>
                                     <td>{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</td>
-                                    <td><><p className='brandColor'><i role={'button'} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} class="fa-sharp fa-solid fa-trash"></i></p></></td>
+                                    <td><><p className='brandColor'><i role={'button'} onClick={() => showDetail()} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={()=>del(row)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
                                 </tr>
                             })}
                         </tbody>
@@ -77,6 +91,12 @@ export default function Customer(props) {
             <AddCustomerModal
                 show={modalShow}
                 onHide={() => setAddCustomerModalShow(false)}
+            />
+
+            <AddCustomerModal
+                            show={viewDetail}
+                            onHide={() => setViewDetail(false)}
+                            data={catData}
             />
         </>
     )
