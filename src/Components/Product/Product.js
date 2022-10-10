@@ -37,33 +37,36 @@ export default function Product(props) {
                 </div>
             </div>
 
-            {
-                product.length !== 0 ? product.map((e) => {
-                    return <div className="card mb-3 mt-3" style={{ maxWidth: "350px" }}>
-                        <div class="row g-0">
-                            <div class="">
-                                <img src={cardImg} class="img-fluid rounded-start" alt="..." />
-                            </div>
-                            <div className="d-flex">
-                                <div class="card-body">
-                                    <h5 class="card-title">{e.name}</h5>
-                                    <p class="card-text">Quantity {e.quantity}</p>
-                                    <p class="card-text"><small class="text-muted">Price : {e.price}pkr</small></p>
-                                </div>
-                                <IconButton aria-label="settings" className='h-25'>
-                                    <div class="dropdown">
-                                        <button class="dropbtn"><MoreVertIcon /></button>
-                                        <div class="dropdown-content">
-                                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-info"></i> View</a>
-                                        </div>
+            <div className='row'>
+                {
+                    product.length !== 0 ? product.map((e) => {
+                        return <div className='col-lg-4 col-sm-12'>
+                            <div className="card mb-3 mt-3" style={{ maxWidth: "350px" }}>
+                                <div class="row g-0">
+                                    <div class="">
+                                        <img src={cardImg} class="img-fluid rounded-start" alt="..." />
                                     </div>
-                                </IconButton>
+                                    <div className="d-flex">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{e.name}</h5>
+                                            <p class="card-text">Quantity {e.quantity}</p>
+                                            <p class="card-text"><small class="text-muted">Price : {e.price}pkr</small></p>
+                                        </div>
+                                        <IconButton aria-label="settings" className='h-25'>
+                                            <div class="dropdown">
+                                                <button class="dropbtn"><MoreVertIcon /></button>
+                                                <div class="dropdown-content">
+                                                    <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-info"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </IconButton>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }) : <h1 className='text-center mt-5'>No Product</h1>
-            }
-
+                    }) : <h1 className='text-center mt-5'>No Product</h1>
+                }
+            </div>
 
             <div class="modal mt-5" id="exampleModal">
                 <div class="modal-dialog mt-5">
@@ -73,12 +76,12 @@ export default function Product(props) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <div className='row my-2'>
+                            <div className='row my-2'>
                                 <div className='col-lg-6 col-sm-12'>
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory ID</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='id'  placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='id' placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
@@ -87,7 +90,7 @@ export default function Product(props) {
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory Name</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='name'  placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='name' placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
@@ -105,7 +108,7 @@ export default function Product(props) {
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory Status</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='status'  placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='status' placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
@@ -114,7 +117,7 @@ export default function Product(props) {
                                     <div className="row align-items-center mt-3">
                                         <label for="">Catagory Created At</label>
                                         <div className="col-12">
-                                            <input type="text" className="form-control mt-1" id="inputcode" name='created_at'  placeholder="Catagory Name" />
+                                            <input type="text" className="form-control mt-1" id="inputcode" name='created_at' placeholder="Catagory Name" />
                                         </div>
                                     </div>
 
