@@ -8,56 +8,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { getUserData } from '../../GetData/Users';
 import AddCustomerModal from './AddCustomerModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Customer(props) {
+    let navigator = useNavigate();
 
     const [modalShow, setAddCustomerModalShow] = useState(false);
 
-    const tableDaata = [
-        {
-            firstName: "muhammad",
-            lastName: "Haris",
-            email: "haris@gmail.com",
-            number: "03044195933",
-            address: "lahore",
-            ethnicity: "Asian"
-        },
-        {
-            firstName: "muhammad",
-            lastName: "Haris",
-            email: "haris@gmail.com",
-            number: "03044195933",
-            address: "lahore",
-            ethnicity: "Asian"
-        },
-        {
-            firstName: "muhammad",
-            lastName: "Haris",
-            email: "haris@gmail.com",
-            number: "03044195933",
-            address: "lahore",
-            ethnicity: "Asian"
-        },
-        {
-            firstName: "muhammad",
-            lastName: "Haris",
-            email: "haris@gmail.com",
-            number: "03044195933",
-            address: "lahore",
-            ethnicity: "Asian"
-        },
-        {
-            firstName: "muhammad",
-            lastName: "Haris",
-            email: "haris@gmail.com",
-            number: "03044195933",
-            address: "lahore",
-            ethnicity: "Asian"
-        },
-    ]
-
     const [userData, setUserData] = useState([]);
     useEffect(() => {
+        if (localStorage.getItem('user') === null) {
+            navigator('/login')
+        }
         getAllUser();
     }, [])
     const getAllUser = async () => {

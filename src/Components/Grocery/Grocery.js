@@ -34,6 +34,9 @@ export default function Grocery(props) {
   const [categoryRecord, setCatagory] = useState([]);
   const [catData, setCatData] = useState();
   useEffect(() => {
+    if (localStorage.getItem('user') === null) {
+      navigator('/login')
+  }
     getAllCatagory();
   }, [])
 

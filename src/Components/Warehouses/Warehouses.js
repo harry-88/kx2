@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getWarehouseData } from '../../GetData/Warehouse';
 import AddWarehouseModal from './AddWarehouseModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Warehouses(props) {
 
+  let navigator = useNavigate();
   const [WarehousemodalShow, setWarehouseModalShow] = useState(false);
 
   const [WarehouseData, setWarehouseData] = useState([]);
   useEffect(() => {
+    if (localStorage.getItem('user') === null) {
+      navigator('/login')
+  }
     getWarehouseUser();
   }, [])
   const getWarehouseUser = async () => {
