@@ -22,7 +22,7 @@ export default function ViewDetail(props) {
                     <h5>Category Details</h5>
                 </div>
                 <div className="col-12">
-                    <div className='addWarehouse'>
+                    <div className='addWarehouse'> 
 
                         <form>
                             <div className='row my-2'>

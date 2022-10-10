@@ -1,5 +1,4 @@
 export const getProductByParentId = async (id) => {
-
     const response = await fetch(
         `${process.env.REACT_APP_BACKEND_DATA}product/category_id/${id}`, {
         method: "GET",
