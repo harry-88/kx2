@@ -38,7 +38,7 @@
     color: white;
 }
 
-input[type=radio]#Public_Warehouse {
+/* input[type=radio]#Public_Warehouse {
     accent-color: #f12711;
 }
 
@@ -52,4 +52,4 @@ input[type=radio]#Smart_Warehouse {
 
 input[type=radio]#Cold_Warehouse {
     accent-color: #f12711;
-}
+} */

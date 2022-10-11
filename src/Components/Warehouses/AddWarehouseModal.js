@@ -4,6 +4,11 @@ import './AddWarehouseModal.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { insertWarehouseData } from '../../GetData/Warehouse';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 export default function AddWarehouseModal(props) {
 
@@ -20,66 +25,65 @@ export default function AddWarehouseModal(props) {
         setModalInputValue({ ...inputModalValue, [e.target.name]: e.target.value });
     }
 
-    const [InputCheckBox,setInputCheckBox] = useState('')
+    const [InputCheckBox, setInputCheckBox] = useState('')
 
     const validCheckBox = (e) => {
         setInputCheckBox(e.target.id);
         // console.log('is a', e.target.id);
     }
 
-    const Validate = async(e) =>{
-        if(inputModalValue.Name === "" || inputModalValue.PersonName === "" || inputModalValue.Location === "" || inputModalValue.Longitude === "" || inputModalValue.Latitude === ""){
+    const Validate = async (e) => {
+        if (inputModalValue.Name === "" || inputModalValue.PersonName === "" || inputModalValue.Location === "" || inputModalValue.Longitude === "" || inputModalValue.Latitude === "") {
 
             toast.warning('fields are required.')
         }
 
         let RegName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-        if(!RegName.test(inputModalValue.Name)){
+        if (!RegName.test(inputModalValue.Name)) {
             toast.warning('Enter a valid Name.')
         }
 
         let RegPerName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-        if(!RegPerName.test(inputModalValue.PersonName)){
+        if (!RegPerName.test(inputModalValue.PersonName)) {
             toast.warning('Enter a valid Person Name.')
         }
 
         let RegPhoNo = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
-        if(!RegPhoNo.test(inputModalValue.PersonPhone)){
+        if (!RegPhoNo.test(inputModalValue.PersonPhone)) {
             toast.warning('Enter a Valid Phone Number.')
         }
 
         let RegLoc = /^[a-zA-Z]*$/
-        if(!RegLoc.test(inputModalValue.Location)){
+        if (!RegLoc.test(inputModalValue.Location)) {
             toast.warning('Enter a Valid Location.')
         }
 
         let RegLon = /^(\d*\.)?\d+$/
-        if(!RegLon.test(inputModalValue.Longitude)){
+        if (!RegLon.test(inputModalValue.Longitude)) {
             toast.warning('Enter a Valid Longitude.')
         }
 
         let RegLat = /^(\d*\.)?\d+$/
-        if(!RegLat.test(inputModalValue.Latitude)){
+        if (!RegLat.test(inputModalValue.Latitude)) {
             toast.warning('Enter a Valid Latitude.')
         }
         let w = {
-            "name":inputModalValue.Name,
-            "location":inputModalValue.Location,
-            "longitude":inputModalValue.Longitude,
-            "latitude":inputModalValue.Latitude,
-            "contact_person_name":inputModalValue.PersonName,
-            "contact_person_phone":inputModalValue.PersonPhone
+            "name": inputModalValue.Name,
+            "location": inputModalValue.Location,
+            "longitude": inputModalValue.Longitude,
+            "latitude": inputModalValue.Latitude,
+            "contact_person_name": inputModalValue.PersonName,
+            "contact_person_phone": inputModalValue.PersonPhone
         }
 
-        const res =  await insertWarehouseData(w);
-        console.log('res is ',res)
-        if(res.code === 200)
-        {
+        const res = await insertWarehouseData(w);
+        console.log('res is ', res)
+        if (res.code === 200) {
             toast.success('Warehouse is created.')
             props.onHide();
             props.getWarehouseUser();
         }
-        else{
+        else {
             toast.error(res.results)
         }
 
@@ -94,74 +98,86 @@ export default function AddWarehouseModal(props) {
             <div className="modal-header warehousemodalhead p-3">
                 <h5>Add Warehouse</h5>
             </div>
+
             <div className="col-12">
                 <div className='addWarehouse'>
                     <h6 className='text-head'>Warehouse Type</h6>
                     <div>
-                        <div className="form-check form-check-inline mt-2">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Public_Warehouse"/>
+                        {/* <div className="form-check form-check-inline mt-2">
+                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Public_Warehouse" />
                             <label className="form-check-label m-1" for="flexRadioDefault1">Public Warehouse</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Private_Warehouse"/>
+                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Private_Warehouse" />
                             <label className="form-check-label m-1" for="flexRadioDefault2">Private Warehouse</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Smart_Warehouse"/>
+                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Smart_Warehouse" />
                             <label className="form-check-label m-1" for="flexRadioDefault3">Smart Warehouse</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Cold_Warehouse"/>
+                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Cold_Warehouse" />
                             <label className="form-check-label m-1" for="flexRadioDefault4">Cold Warehouse</label>
-                        </div>
+                        </div> */}
+
+                        <FormControl>
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                            >
+                                <FormControlLabel value="Public Warehouse" onClick={validCheckBox} name="flexRadioDefault" id="Cold_Warehouse" control={<Radio />} label="Public Warehouse" />
+                                <FormControlLabel value="Private Warehouse" onClick={validCheckBox} name="flexRadioDefault" id="Smart_Warehouse" control={<Radio />} label="Private Warehouse" />
+                                <FormControlLabel value="Smart Warehouse" onClick={validCheckBox} name="flexRadioDefault" id="Private_Warehouse" control={<Radio />} label="Smart Warehouse" />
+                                <FormControlLabel value="Cold Warehouse" onClick={validCheckBox} name="flexRadioDefault" id="Public_Warehouse" control={<Radio />} label="Cold Warehouse" />
+                            </RadioGroup>
+                        </FormControl>
 
                     </div>
 
-                    <form>
-                        <div className='row'>
-                            <div className="col-lg-6 col-md-6 col-sm-12">
-                                <div className="row align-items-center mt-3">
-                                    <label for="">Name</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='Name' value={inputModalValue.Name} onChange={onChange} placeholder="Name" />
-                                    </div>
-
-                                    <label for="" className='mt-1'>Person Name</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='PersonName' value={inputModalValue.PersonName} onChange={onChange} placeholder="Person Name" />
-                                    </div>
-
-                                    <label for="" className='mt-1'>Person Phone</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='PersonPhone' value={inputModalValue.PersonPhone} onChange={onChange} placeholder="Person Phone" />
-                                    </div>
-                                </div>
+                    <div className='row'>
+                        <div className='col-6'>
+                            <label for="">Name</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='Name' value={inputModalValue.Name} onChange={onChange} placeholder="Name" />
                             </div>
-
-                            <div className="col-lg-6 col-md-6 col-sm-12">
-                                <div className="row align-items-center mt-3">
-                                    <label for="" >Location</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='Location' value={inputModalValue.Location} onChange={onChange} placeholder="Location" />
-                                    </div>
-
-                                    <label for="" className='mt-1'>Longitude</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='Longitude' value={inputModalValue.Longitude} onChange={onChange} placeholder="Longitude" />
-                                    </div>
-
-                                    <label for="" className='mt-1'>Latitude</label>
-                                    <div className="col-12">
-                                        <input type="text" className="form-control mt-1" id="inputcode" name='Latitude' value={inputModalValue.Latitude} onChange={onChange} placeholder="Latitude" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-
                         </div>
 
-                    </form>
+                        <div className='col-6'>
+                            <label for="" className='mt-1'>Person Name</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='PersonName' value={inputModalValue.PersonName} onChange={onChange} placeholder="Person Name" />
+                            </div>
+                        </div>
+
+                        <div className='col-6'>
+                            <label for="" className='mt-1'>Person Phone</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='PersonPhone' value={inputModalValue.PersonPhone} onChange={onChange} placeholder="Person Phone" />
+                            </div>
+                        </div>
+
+                        <div className='col-6'>
+                            <label for="" >Location</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='Location' value={inputModalValue.Location} onChange={onChange} placeholder="Location" />
+                            </div>
+                        </div>
+
+                        <div className='col-6'>
+                            <label for="" className='mt-1'>Longitude</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='Longitude' value={inputModalValue.Longitude} onChange={onChange} placeholder="Longitude" />
+                            </div>
+                        </div>
+
+                        <div className='col-6'>
+                            <label for="" className='mt-1'>Latitude</label>
+                            <div className="col-12">
+                                <input type="text" className="form-control mt-1" id="inputcode" name='Latitude' value={inputModalValue.Latitude} onChange={onChange} placeholder="Latitude" />
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div className="modal-footer col-12">

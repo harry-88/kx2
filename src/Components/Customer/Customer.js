@@ -9,8 +9,11 @@ import Paper from '@mui/material/Paper';
 import { getUserData } from '../../GetData/Users';
 import AddCustomerModal from './AddCustomerModal';
 import { useNavigate } from 'react-router-dom';
+import Maintinance from '../Grocery/Maintinance';
 
 export default function Customer(props) {
+
+    const [MaintinanceModalShow, SetMaintinanceModalShow] = useState(false)
 
 
     const [catData, setCatData] = useState();
@@ -38,9 +41,9 @@ export default function Customer(props) {
     }
 
 
-    const del = (data) =>{
-        alert(`Would you want to delete ${data.name}`)
-    }
+    // const del = (data) =>{
+    //     alert(`Would you want to delete ${data.name}`)
+    // }
     return (
         <>
             <div className={props.pageFullWidth === false ? 'fullWidth' : 'smalWidth'}>
@@ -78,7 +81,7 @@ export default function Customer(props) {
                                     <td>{row.phone_no !== null ? row.phone_no : '-----'}</td>
                                     <td>{row.created_at.slice(0, 10) + "\t" + row.created_at.slice(11, 19)}</td>
                                     <td>{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</td>
-                                    <td><><p className='brandColor'><i role={'button'} onClick={() => showDetail()} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={()=>del(row)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
+                                    <td><><p className='brandColor'><i role={'button'} onClick={() => showDetail()} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={() => SetMaintinanceModalShow(true)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
                                 </tr>
                             })}
                         </tbody>
@@ -94,9 +97,13 @@ export default function Customer(props) {
             />
 
             <AddCustomerModal
-                            show={viewDetail}
-                            onHide={() => setViewDetail(false)}
-                            data={catData}
+                show={viewDetail}
+                onHide={() => setViewDetail(false)}
+                data={catData}
+            />
+            <Maintinance
+                show={MaintinanceModalShow}
+                onHide={() => SetMaintinanceModalShow(false)}
             />
         </>
     )

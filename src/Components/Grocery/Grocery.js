@@ -21,11 +21,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import ViewDetail from './ViewDetail';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Maintinance from './Maintinance';
 
 
 
 export default function Grocery(props) {
 
+  const [MaintinanceModalShow, SetMaintinanceModalShow] = useState(false)
 
   let navigator = useNavigate();
   const [GrocerymodalShow, setGroceryModalShow] = useState(false);
@@ -36,7 +38,7 @@ export default function Grocery(props) {
   useEffect(() => {
     if (localStorage.getItem('user') === null) {
       navigator('/login')
-  }
+    }
     getAllCatagory();
   }, [])
 
@@ -104,9 +106,9 @@ export default function Grocery(props) {
     setViewDetail(true)
   }
 
-  const del = (data) =>{
-    alert(`Would you want to delete ${data.name}`)
-}
+  //   const del = (data) =>{
+  //     alert(`Would you want to delete ${data.name}`)
+  // }
 
   return (
 
@@ -127,7 +129,7 @@ export default function Grocery(props) {
             return <div className='col-lg-3 col-sm-12'>
               <div className="card mb-3 mt-3" style={{ height: "260px" }}>
                 <div className="row ">
-                  <div className="" style={{cursor: "pointer"}} onClick={() => navigator(`${c.id}`)}>
+                  <div className="" style={{ cursor: "pointer" }} onClick={() => navigator(`${c.id}`)}>
                     <img src={Menu[i % 2].image} style={{ width: "500px" }} className="img-fluid rounded-start" alt="" />
                   </div>
                   <div className="d-flex">
@@ -140,8 +142,9 @@ export default function Grocery(props) {
 
                         <Dropdown.Menu>
                           <Dropdown.Item data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => showDetail(c)}><i className="fa-solid fa-circle-info"></i> View</Dropdown.Item>
-                          <Dropdown.Item onClick={()=>del(c)}><i className="fa-solid fa-trash"></i> Delete</Dropdown.Item>
+                          <Dropdown.Item onClick={() => SetMaintinanceModalShow(true)}><i className="fa-solid fa-trash"></i> Delete</Dropdown.Item>
                         </Dropdown.Menu>
+                        {/* onClick={()=>del(c)} */}
                       </Dropdown>
                     </div>
                   </div>
@@ -163,6 +166,10 @@ export default function Grocery(props) {
         getAllCatagory={getAllCatagory}
         show={GrocerymodalShow}
         onHide={() => setGroceryModalShow(false)}
+      />
+      <Maintinance
+        show={MaintinanceModalShow}
+        onHide={() => SetMaintinanceModalShow(false)}
       />
     </>
   )

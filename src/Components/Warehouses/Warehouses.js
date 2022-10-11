@@ -2,8 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { getWarehouseData } from '../../GetData/Warehouse';
 import AddWarehouseModal from './AddWarehouseModal';
 import { useNavigate } from 'react-router-dom';
+import Maintinance from '../Grocery/Maintinance';
 
 export default function Warehouses(props) {
+
+  const [catData, setCatData] = useState();
+  const [viewDetail, setViewDetail] = useState(false)
+
+  const showDetail = (detail) => {
+      setCatData(detail)
+      setViewDetail(true)
+  }
+
+
+
+  const [MaintinanceModalShow, SetMaintinanceModalShow] = useState(false)
+
 
   let navigator = useNavigate();
   const [WarehousemodalShow, setWarehouseModalShow] = useState(false);
@@ -12,7 +26,7 @@ export default function Warehouses(props) {
   useEffect(() => {
     if (localStorage.getItem('user') === null) {
       navigator('/login')
-  }
+    }
     getWarehouseUser();
   }, [])
   const getWarehouseUser = async () => {
@@ -57,7 +71,7 @@ export default function Warehouses(props) {
                   <td>{row.longitude !== null ? row.longitude : '-----'}</td>
                   <td>{row.latitude.slice(0, 10) + "\t" + row.latitude.slice(11, 19)}</td>
                   {/* <td>{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</td> */}
-                  <td><><p className='brandColor'><i role={'button'} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} class="fa-sharp fa-solid fa-trash"></i></p></></td>
+                  <td><><p className='brandColor'><i role={'button'} onClick={() => showDetail()} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={() => SetMaintinanceModalShow(true)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
                 </tr>
               })}
             </tbody>
@@ -70,7 +84,16 @@ export default function Warehouses(props) {
       <AddWarehouseModal
         show={WarehousemodalShow}
         onHide={() => setWarehouseModalShow(false)}
-          getWarehouseUser={getWarehouseUser}
+        getWarehouseUser={getWarehouseUser}
+      />
+      <AddWarehouseModal
+        show={viewDetail}
+        onHide={() => setViewDetail(false)}
+        data={catData}
+      />
+      <Maintinance
+        show={MaintinanceModalShow}
+        onHide={() => SetMaintinanceModalShow(false)}
       />
 
     </>
