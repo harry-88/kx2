@@ -135,6 +135,13 @@ export default function Sidebar(props) {
 
     },
     {
+      src: <BiGroup />,
+      menu: 'Ethnics',
+      link: '/ethnic',
+      title:'Ethnics'
+
+    },
+    {
       src: <MdOutlineLocalGroceryStore />,
       menu: 'Grocery',
       link: '/grocery',

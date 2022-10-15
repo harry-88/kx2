@@ -12,7 +12,7 @@ import Product from './Components/Product/Product'
 import Locations from './Components/Locations/Locations';
 import Warehouses from './Components/Warehouses/Warehouses';
 import Login from './Components/Login/Login';
-// import { BrowserRouter as Router } from "react-router-dom";
+import Ethnic from './Components/Ethnic/Ethnic';
 
 function App() {
   const [pageFullWidth,setPageFullWidth] = useState(false);
@@ -25,6 +25,7 @@ function App() {
           <Route path="/login" element={[<Login /> ]} />
           <Route path="/" element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Dashboard pageFullWidth={pageFullWidth} /> ]} />
           <Route path='/customers' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Customer  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path="/ethnic" element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Ethnic pageFullWidth={pageFullWidth} /> ]} />
           <Route path='/locations' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Locations  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
           <Route path='/administration' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Administration  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
           <Route path='/grocery' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Grocery  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
