@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-export default function ViewEthnicDetail(props) {
+export default function SupportModal(props) {
 
     const [isEdit, setIsEdit] = useState(false);
     const [data, setData] = useState();
@@ -19,9 +19,7 @@ export default function ViewEthnicDetail(props) {
                 aria-labelledby="modal-fade contained-modal-title-vcenter"
                 className='WarehouseModal'>
                 <div className="modal-header warehousemodalhead p-3">
-
-                    <h5>Ethnics Details</h5>
-
+                    <h5>Support Details</h5>
                 </div>
                 <div className="col-12">
                     <div className='addWarehouse'>

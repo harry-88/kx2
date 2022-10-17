@@ -13,6 +13,7 @@ import Locations from './Components/Locations/Locations';
 import Warehouses from './Components/Warehouses/Warehouses';
 import Login from './Components/Login/Login';
 import Ethnic from './Components/Ethnic/Ethnic';
+import Support from './Components/Support/Support';
 
 function App() {
   const [pageFullWidth,setPageFullWidth] = useState(false);
@@ -31,6 +32,7 @@ function App() {
           <Route path='/grocery' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Grocery  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
           <Route path='/warehouses' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Warehouses  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
           <Route path='/grocery/:catId' element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Product  pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth}/>]} />
+          <Route path="/support" element={[<SideBar pageFullWidth={pageFullWidth} setPageFullWidth= {setPageFullWidth} />,<Support pageFullWidth={pageFullWidth} /> ]} />
         </Routes>
       </BrowserRouter>
 

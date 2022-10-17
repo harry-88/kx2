@@ -9,6 +9,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { ClearSharp } from '@mui/icons-material';
 
 export default function AddWarehouseModal(props) {
 
@@ -38,53 +39,56 @@ export default function AddWarehouseModal(props) {
             toast.warning('fields are required.')
         }
 
-        let RegName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-        if (!RegName.test(inputModalValue.Name)) {
-            toast.warning('Enter a valid Name.')
-        }
-
-        let RegPerName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-        if (!RegPerName.test(inputModalValue.PersonName)) {
-            toast.warning('Enter a valid Person Name.')
-        }
-
-        let RegPhoNo = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
-        if (!RegPhoNo.test(inputModalValue.PersonPhone)) {
-            toast.warning('Enter a Valid Phone Number.')
-        }
-
-        let RegLoc = /^[a-zA-Z]*$/
-        if (!RegLoc.test(inputModalValue.Location)) {
-            toast.warning('Enter a Valid Location.')
-        }
-
-        let RegLon = /^(\d*\.)?\d+$/
-        if (!RegLon.test(inputModalValue.Longitude)) {
-            toast.warning('Enter a Valid Longitude.')
-        }
-
-        let RegLat = /^(\d*\.)?\d+$/
-        if (!RegLat.test(inputModalValue.Latitude)) {
-            toast.warning('Enter a Valid Latitude.')
-        }
-        let w = {
-            "name": inputModalValue.Name,
-            "location": inputModalValue.Location,
-            "longitude": inputModalValue.Longitude,
-            "latitude": inputModalValue.Latitude,
-            "contact_person_name": inputModalValue.PersonName,
-            "contact_person_phone": inputModalValue.PersonPhone
-        }
-
-        const res = await insertWarehouseData(w);
-        console.log('res is ', res)
-        if (res.code === 200) {
-            toast.success('Warehouse is created.')
-            props.onHide();
-            props.getWarehouseUser();
-        }
         else {
-            toast.error(res.results)
+            let RegName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+            if (!RegName.test(inputModalValue.Name)) {
+                toast.warning('Enter a valid Name.')
+            }
+
+            let RegPerName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+            if (!RegPerName.test(inputModalValue.PersonName)) {
+                toast.warning('Enter a valid Person Name.')
+            }
+
+            let RegPhoNo = /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/
+            if (!RegPhoNo.test(inputModalValue.PersonPhone)) {
+                toast.warning('Enter a Valid Phone Number.')
+            }
+
+            let RegLoc = /^[a-zA-Z]*$/
+            if (!RegLoc.test(inputModalValue.Location)) {
+                toast.warning('Enter a Valid Location.')
+            }
+
+            let RegLon = /^(\d*\.)?\d+$/
+            if (!RegLon.test(inputModalValue.Longitude)) {
+                toast.warning('Enter a Valid Longitude.')
+            }
+
+            let RegLat = /^(\d*\.)?\d+$/
+            if (!RegLat.test(inputModalValue.Latitude)) {
+                toast.warning('Enter a Valid Latitude.')
+            }
+            let w = {
+                "name": inputModalValue.Name,
+                "location": inputModalValue.Location,
+                "longitude": inputModalValue.Longitude,
+                "latitude": inputModalValue.Latitude,
+                "contact_person_name": inputModalValue.PersonName,
+                "contact_person_phone": inputModalValue.PersonPhone
+            }
+
+
+            const res = await insertWarehouseData(w);
+            console.log('res is ', res)
+            if (res.code === 200) {
+                toast.success('Warehouse is created.')
+                props.onHide();
+                props.getWarehouseUser();
+            }
+            else {
+                toast.error(res.results)
+            }
         }
 
     }
@@ -103,22 +107,6 @@ export default function AddWarehouseModal(props) {
                 <div className='addWarehouse'>
                     <h6 className='text-head'>Warehouse Type</h6>
                     <div>
-                        {/* <div className="form-check form-check-inline mt-2">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Public_Warehouse" />
-                            <label className="form-check-label m-1" for="flexRadioDefault1">Public Warehouse</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Private_Warehouse" />
-                            <label className="form-check-label m-1" for="flexRadioDefault2">Private Warehouse</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Smart_Warehouse" />
-                            <label className="form-check-label m-1" for="flexRadioDefault3">Smart Warehouse</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="" type="radio" onClick={validCheckBox} name="flexRadioDefault" id="Cold_Warehouse" />
-                            <label className="form-check-label m-1" for="flexRadioDefault4">Cold Warehouse</label>
-                        </div> */}
 
                         <FormControl>
                             <RadioGroup
@@ -181,7 +169,7 @@ export default function AddWarehouseModal(props) {
 
                 </div>
                 <div className="modal-footer col-12">
-                    <button type="button" onClick={props.onHide} className="btn cancelbtn" data-dismiss="modal">Cancel</button>
+                    <button type="button" className="btn cancelbtn" onClick={props.onHide} data-dismiss="modal">Cancel</button>
                     <button type="button" className='btn savebtn' onClick={Validate}>Save</button>
                 </div>
             </div >

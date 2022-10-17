@@ -22,8 +22,8 @@ import Logo from "../../Assets/Logo1.png";
 import { Route } from 'react-router-dom';
 
 
-import {FaBitbucket} from 'react-icons/fa'
-import {BiGroup} from 'react-icons/bi'
+import {FaBitbucket, FaUser} from 'react-icons/fa'
+import {BiGroup, BiSupport} from 'react-icons/bi'
 import {FiLogOut} from 'react-icons/fi'
 import {MdOutlineLocalGroceryStore ,MdAdminPanelSettings} from 'react-icons/md'
 import {HiOfficeBuilding ,HiLocationMarker} from 'react-icons/hi'
@@ -135,7 +135,7 @@ export default function Sidebar(props) {
 
     },
     {
-      src: <BiGroup />,
+      src: <FaUser />,
       menu: 'Ethnics',
       link: '/ethnic',
       title:'Ethnics'
@@ -167,6 +167,13 @@ export default function Sidebar(props) {
       menu: 'Administration',
       link: '/administration',
       title:'Administration'
+
+    },
+    {
+      src: <BiSupport/>,
+      menu: 'Support',
+      link: '/support',
+      title:'Support'
 
     },
     {
