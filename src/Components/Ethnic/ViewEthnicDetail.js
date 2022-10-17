@@ -19,7 +19,9 @@ export default function ViewEthnicDetail(props) {
                 aria-labelledby="modal-fade contained-modal-title-vcenter"
                 className='WarehouseModal'>
                 <div className="modal-header warehousemodalhead p-3">
+
                     <h5>Ethnics Details</h5>
+
                 </div>
                 <div className="col-12">
                     <div className='addWarehouse'>
