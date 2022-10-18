@@ -35,11 +35,15 @@ export default function AddGroceryModal(props) {
             }
         }
     }
+    const exitmodal = () => {
+        inputModalValue.name = ''
+    }
 
     return (
         <Modal
             {...props}
             size="lg"
+            onExit={exitmodal}
             aria-labelledby="modal-fade contained-modal-title-vcenter"
             className='WarehouseModal'>
             <div className="modal-header warehousemodalhead p-3">
