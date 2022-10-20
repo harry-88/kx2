@@ -165,6 +165,7 @@ export default function Grocery(props) {
       <AddGroceryModal
         getAllCatagory={getAllCatagory}
         show={GrocerymodalShow}
+        parentId= {'0'}
         onHide={() => setGroceryModalShow(false)}
       />
       <Maintinance

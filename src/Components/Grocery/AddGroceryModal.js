@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { addCatagoryRecord } from '../../GetData/Grocerys';
 
+
 export default function AddGroceryModal(props) {
 
     const onChange = (e) => {
@@ -19,19 +20,21 @@ export default function AddGroceryModal(props) {
 
     const addCatagory = async(e) => {
         if (inputModalValue.name === '') {
-            toast.error("Fields is required.")
+            toast.error("Field is required.")
         }
         else {
-            const result  = await addCatagoryRecord('0',inputModalValue);
+        //  getAllCatagory();
+            const result  = await addCatagoryRecord(props.parentId,inputModalValue);
             if(result.code === 200)
             {
                 toast("Catagory is added.")
                 props.onHide();
                 props.getAllCatagory();
+                props.getCategory();
 
             }
             else{
-                toast.warning("There is some error in server side.")
+                toast.warning("Category is already exist.")
             }
         }
     }

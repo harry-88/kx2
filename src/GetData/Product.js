@@ -1,3 +1,13 @@
+export const getCategoryByParentId = async (id) => {
+    const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_DATA}category/parent_id/${id}`, {
+        method: "GET",
+    });
+    const result = await response.json();
+
+    return result;
+}
+
 export const getProductByParentId = async (id) => {
     const response = await fetch(
         `${process.env.REACT_APP_BACKEND_DATA}product/category_id/${id}`, {
