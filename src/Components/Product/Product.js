@@ -95,7 +95,7 @@ export default function Product(props) {
                 </div>
             </div>
 
-            <div className='row'>
+            <div className=' tableWidth row'>
                 {category.map((a) => {
                     return <div className='col-lg-3 col-sm-12'>
                         <div className="card mb-3 mt-3" style={{ maxWidth: "350px" }}>
@@ -138,7 +138,7 @@ export default function Product(props) {
                     <button className='btn btn-light btn-outline-warning text-dark' onClick={() => setAddProductModal(true)}  >Add Product</button>
                 </div>
             </div>
-            <div className='row'>
+            <div className='tableWidth row'>
                 {product.map((e) => {
                     return <div className='col-lg-3 col-sm-12'>
                         <div className="card mb-3 mt-3" style={{ maxWidth: "350px" }}>
@@ -195,6 +195,7 @@ export default function Product(props) {
 
             <AddGroceryModal
                 show={GrocerymodalShow}
+                getAllCatagory={getCategory}
                 parentId={catId}
                 onHide={() => setGroceryModalShow(false)}
             />

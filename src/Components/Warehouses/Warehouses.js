@@ -71,7 +71,7 @@ export default function Warehouses(props) {
                   <td>{row.longitude !== null ? row.longitude : '-----'}</td>
                   <td>{row.latitude.slice(0, 10) + "\t" + row.latitude.slice(11, 19)}</td>
                   {/* <td>{row.updated_at.slice(0, 10) + "\t" + row.updated_at.slice(11, 19)}</td> */}
-                  <td><><p className='brandColor'><i role={'button'} onClick={() => showDetail()} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={() => SetMaintinanceModalShow(true)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
+                  <td><><p className='brandColor'><i role={'button'} onClick={() => SetMaintinanceModalShow(true)} className=" fa-solid fa-pen-to-square"></i> <i role={'button'} onClick={() => SetMaintinanceModalShow(true)} className="fa-sharp fa-solid fa-trash"></i></p></></td>
                 </tr>
               })}
             </tbody>
@@ -86,11 +86,7 @@ export default function Warehouses(props) {
         onHide={() => setWarehouseModalShow(false)}
         getWarehouseUser={getWarehouseUser}
       />
-      <AddWarehouseModal
-        show={viewDetail}
-        onHide={() => setViewDetail(false)}
-        data={catData}
-      />
+      
       <Maintinance
         show={MaintinanceModalShow}
         onHide={() => SetMaintinanceModalShow(false)}
